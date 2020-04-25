@@ -2,6 +2,8 @@
 
 Raspberry pi based checking tools for your home internet connection.
 
+Licensed under the MIT license - see LICENSE.txt
+
 ## Getting Started
 
 This is python based, recommend using a virtual environment. The gitignore file is setup for a `.venv` folder so you can execute the following to set it up:
