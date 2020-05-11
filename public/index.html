@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Netcheck</title>
+	<meta name="description" content="Displays the current internet speed">
+	<meta name="author" content="David Bennington">
+	<link rel="stylesheet" href="reset.css">
+	<style>
+		body {
+			font-size: 24px;
+			background-color: #1b262c;
+			color: #74d4c0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.container {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
+
+		.item {
+			padding: 10px 0px 25px 0px;
+		}
+
+		.download {
+			font-size: 4em;
+		}
+
+		.upload {
+			font-size: 1.1em;
+		}
+
+		.turquoise-flat-button {
+			position: relative;
+			vertical-align: top;
+			width: 100%;
+			height: 60px;
+			padding: 0;
+			font-size: 22px;
+			color: white;
+			text-align: center;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+			background: #1abc9c;
+			border: 0;
+			border-bottom: 2px solid #12ab8d;
+			cursor: pointer;
+			-webkit-box-shadow: inset 0 -2px #12ab8d;
+			box-shadow: inset 0 -2px #12ab8d;
+		}
+
+		.turquoise-flat-button:active {
+			top: 1px;
+			outline: none;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="item "><span>Download:&nbsp;</span><span id="txt-download" class="download"></span><span>&nbsp;Mbps</span>
+		</div>
+		<div class="item upload"><span>Upload:&nbsp;</span><span id="txt-upload" class="upload"></span>&nbsp;Mbps</div>
+		<div><button class="turquoise-flat-button" id="btn-refresh" type="button">Reload</button></div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script>
+		const doLoad = () => {
+			console.log('Reloading...');
+			$.get("result.json", function (data) {
+				console.log("Loaded");
+				$("#txt-download").text(data.downloadMbits);
+				$("#txt-upload").text(data.uploadMbits);
+			});
+		}
+		$(document).ready(() => {
+			$("#btn-refresh").click(() => {
+				doLoad();
+			});
+			doLoad();
+		});
+	</script>
+
+</body>
+
+</html>
