@@ -6,15 +6,11 @@ Licensed under the MIT license - see LICENSE.txt
 
 ## Getting Started
 
-This is python based, recommend using a virtual environment. The gitignore file is setup for a `.venv` folder so you can execute the following to set it up:
+This is nodejs based running off stable (there is a `.nvmrc` file to use as well).
 
 ```bash
-# Install nodejs dependency on one of the testers (fast.com)
-npm install --global fast-cli
-
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+# Install dependencies with npm
+npm install
 ```
 
-This will set up a python virtual environment and start using it, as well as installing any required dependencies. Python 3.7+ is recommended. There's also a dependency on the nodejs `fast`, but I'm hooting to make that optional in the future. I tried at least one pything version, but it diddn't work and I want to move on rather than get stuck in that particular detail!
+By default the server will bind to a random port. If you want to specify a specifc one (recommended if you want to have a browser shortcut to run), then you can `cp .env.example .env` and change the value there.

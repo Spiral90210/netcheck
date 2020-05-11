@@ -63,8 +63,10 @@ app.get('*', function (req, res) {
 });
 
 
-const server = app.listen(process.env.PORT);
-const port = server.address().port;
+const port = ('PORT' in process.env)
+	? process.env.PORT
+	: 0;
+const server = app.listen(port);
 
 console.log(`http://localhost:${port}/index.html`);
 console.log(`http://localhost:${port}/result.json`);
