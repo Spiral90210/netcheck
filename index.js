@@ -67,6 +67,7 @@ const port = ('PORT' in process.env)
 	? process.env.PORT
 	: 0;
 const server = app.listen(port);
+const realPort = server.address().port;
 
-console.log(`http://localhost:${port}/index.html`);
-console.log(`http://localhost:${port}/result.json`);
+console.log(`http://localhost:${realPort}/index.html`);
+console.log(`http://localhost:${realPort}/result.json`);
